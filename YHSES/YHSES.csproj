@@ -42,9 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\YaskawaLib.RCC1.cs" />
+    <Compile Include="Library\YaskawaLib.RCC01.cs" />
     <Compile Include="Library\YaskawaLib.cs" />
-    <Compile Include="Library\YaskawaLib.RCC2.cs" />
+    <Compile Include="Library\YaskawaLib.RCC02.cs" />
+    <Compile Include="Library\YaskawaLib.RCC04.cs" />
+    <Compile Include="Library\YaskawaLib.RCC20.cs" />
+    <Compile Include="Library\YaskawaLib.RCC03.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Packet\PacketAns.cs" />
     <Compile Include="Packet\PacketHeader.cs" />

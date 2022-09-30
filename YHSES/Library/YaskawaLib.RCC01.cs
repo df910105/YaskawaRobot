@@ -28,4 +28,13 @@ namespace YHSES.Library
             return ans.status;
         }
     }
+
+    public class AlarmData
+    {
+        public DateTime Time;
+        public string Name;
+        public uint Code;
+        public uint Data;
+        public uint Type;
+    }
 }
