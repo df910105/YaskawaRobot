@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YHSES
+namespace YHSES.Packet
 {
-    class YRC1000AnsPacket
+    class PacketAns
     {
-        readonly YRC1000PacketHeader header;
-        readonly byte service;
-        readonly byte status;
-        readonly byte added_status_size;
-        readonly ushort added_status;
-        readonly byte[] data;
+        readonly PacketHeader header;
+        public readonly byte service;
+        public readonly byte status;
+        public readonly byte added_status_size;
+        public readonly ushort added_status;
+        public readonly byte[] data;
 
-        public YRC1000AnsPacket(byte[] _packet)
+        public PacketAns(byte[] _packet)
         {
-            header = new YRC1000PacketHeader(_packet);
+            header = new PacketHeader(_packet);
             service = _packet[24];
             status = _packet[25];
             added_status_size = _packet[26];
             added_status = BitConverter.ToUInt16(_packet, 28);
-            data = _packet.Skip(YRC1000PacketHeader.HEADER_SIZE).Take(header.data_size).ToArray();
+            data = _packet.Skip(PacketHeader.HEADER_SIZE).Take(header.data_size).ToArray();
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace YHSES
             h.Append(service);
             h.Append(status);
             h.Append(added_status_size);
-            h.Append(YRC1000PacketHeader.HEADER_PADDING_U8);
+            h.Append(PacketHeader.HEADER_PADDING_U8);
             h.Concat(BitConverter.GetBytes(added_status));
-            h.Concat(BitConverter.GetBytes(YRC1000PacketHeader.HEADER_PADDING_U16));
+            h.Concat(BitConverter.GetBytes(PacketHeader.HEADER_PADDING_U16));
             h.Concat(data);
             return h.ToArray();
         }

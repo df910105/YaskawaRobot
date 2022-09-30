@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YHSES
+namespace YHSES.Packet
 {
-    internal class YRC1000PacketHeader
+    internal class PacketHeader
     {
         public const string HEADER_IDENTIFIER = "YERC";
         public const ushort HEADER_SIZE = 0x20;
@@ -26,7 +26,7 @@ namespace YHSES
         public readonly byte req_id;
         public readonly uint block_no;
 
-        public YRC1000PacketHeader(ushort _data_size, byte _division, byte _ack, byte _req_id, uint _block_no)
+        public PacketHeader(ushort _data_size, byte _division, byte _ack, byte _req_id, uint _block_no)
         {
             data_size = _data_size;
             division = _division;
@@ -35,7 +35,7 @@ namespace YHSES
             block_no = _block_no;
         }
 
-        public YRC1000PacketHeader(byte[] packet)
+        public PacketHeader(byte[] packet)
         {
             data_size = BitConverter.ToUInt16(packet, 6);
             division = packet[9];

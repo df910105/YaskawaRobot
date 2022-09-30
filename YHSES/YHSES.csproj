@@ -42,11 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="YRC1000.cs" />
+    <Compile Include="Library\YaskawaLib.RCC1.cs" />
+    <Compile Include="Library\YaskawaLib.cs" />
+    <Compile Include="Library\YaskawaLib.RCC2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YRC1000AnsPacket.cs" />
-    <Compile Include="YRC1000PacketHeader.cs" />
-    <Compile Include="YRC1000ReqPacket.cs" />
+    <Compile Include="Packet\PacketAns.cs" />
+    <Compile Include="Packet\PacketHeader.cs" />
+    <Compile Include="Packet\PacketReq.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
