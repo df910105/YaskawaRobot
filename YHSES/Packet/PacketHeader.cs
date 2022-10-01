@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace YHSES.Packet
 {
@@ -46,16 +45,13 @@ namespace YHSES.Packet
 
         public byte[] ToBytes()
         {
-            IEnumerable<byte> h = Encoding.ASCII.GetBytes(HEADER_IDENTIFIER);
-            h.Concat(BitConverter.GetBytes(HEADER_SIZE));
-            h.Concat(BitConverter.GetBytes(data_size));
-            h.Append(HEADER_RESERVED_1);
-            h.Append(division);
-            h.Append(ack);
-            h.Append(req_id);
-            h.Concat(BitConverter.GetBytes(block_no));
-            h.Concat(Encoding.ASCII.GetBytes(HEADER_RESERVED_2));
-            return h.ToArray();
+            return Encoding.ASCII.GetBytes(HEADER_IDENTIFIER)
+                .Concat(BitConverter.GetBytes(HEADER_SIZE))
+                .Concat(BitConverter.GetBytes(data_size))
+                .Concat(new byte[] { HEADER_RESERVED_1, division, ack, req_id })
+                .Concat(BitConverter.GetBytes(block_no))
+                .Concat(Encoding.ASCII.GetBytes(HEADER_RESERVED_2))
+                .ToArray();
         }
     }
 }

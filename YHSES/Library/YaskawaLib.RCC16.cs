@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using YHSES.Packet;
 
 namespace YHSES.Library
@@ -64,21 +63,20 @@ namespace YHSES.Library
 
         private byte[] ParsePositionDataBytes(Posistion config)
         {
-            IEnumerable<byte> p = BitConverter.GetBytes(config.DataType);
-            p.Concat(BitConverter.GetBytes(config.Figure));
-            p.Concat(BitConverter.GetBytes(config.ToolNumber));
-            p.Concat(BitConverter.GetBytes(config.UserCoordNumber));
-            p.Concat(BitConverter.GetBytes(config.ExtendedType));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_1));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_2));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_3));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_4));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_5));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_6));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_7));
-            p.Concat(BitConverter.GetBytes(config.AxisData.Axis_8));
-
-            return p.ToArray();
+            return BitConverter.GetBytes(config.DataType)
+                .Concat(BitConverter.GetBytes(config.Figure))
+                .Concat(BitConverter.GetBytes(config.ToolNumber))
+                .Concat(BitConverter.GetBytes(config.UserCoordNumber))
+                .Concat(BitConverter.GetBytes(config.ExtendedType))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_1))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_2))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_3))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_4))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_5))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_6))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_7))
+                .Concat(BitConverter.GetBytes(config.AxisData.Axis_8))
+                .ToArray();
         }
     }
 }

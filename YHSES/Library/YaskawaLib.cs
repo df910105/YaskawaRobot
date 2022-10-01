@@ -110,12 +110,12 @@ namespace YHSES.Library
         private byte[] GenerateErrorAnsPacket(byte result, ushort errno)
         {
             //when error, result and error number are what callers care about
-            IEnumerable<byte> p = new byte[25];
-            p.Append(result);
-            p.Concat(new byte[2]);
-            p.Concat(BitConverter.GetBytes(errno));
-            p.Concat(new byte[2]);
-            return p.ToArray();
+            return new byte[25]
+                .Concat(new byte[1] { result })
+                .Concat(new byte[2])
+                .Concat(BitConverter.GetBytes(errno))
+                .Concat(new byte[2])
+                .ToArray();
         }
 
         private PacketAns Transmit(byte[] packet, int direction = TRANSMISSION_SEND_AND_RECV)

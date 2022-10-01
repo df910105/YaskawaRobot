@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace YHSES.Packet
 {
@@ -31,15 +30,12 @@ namespace YHSES.Packet
         /// <returns></returns>
         public byte[] ToBytes()
         {
-            IEnumerable<byte> h = header.ToBytes();
-            h.Append(service);
-            h.Append(status);
-            h.Append(added_status_size);
-            h.Append(PacketHeader.HEADER_PADDING_U8);
-            h.Concat(BitConverter.GetBytes(added_status));
-            h.Concat(BitConverter.GetBytes(PacketHeader.HEADER_PADDING_U16));
-            h.Concat(data);
-            return h.ToArray();
+            return header.ToBytes()
+                .Concat(new byte[] { service, status, added_status_size, PacketHeader.HEADER_PADDING_U8, })
+                .Concat(BitConverter.GetBytes(added_status))
+                .Concat(BitConverter.GetBytes(PacketHeader.HEADER_PADDING_U16))
+                .Concat(data)
+                .ToArray();
         }
     }
 }
