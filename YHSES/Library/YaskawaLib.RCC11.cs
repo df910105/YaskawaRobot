@@ -9,10 +9,10 @@ namespace YHSES.Library
 {
     partial class YaskawaLib
     {
-        public int ReadIOData(ushort number, ref byte data, out ushort err_code)
+        public int ReadByteData(ushort number, ref byte data, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                0x78, number, 1, 0x0E,
+                0x7A, number, 1, 0x0E,
                 new byte[0], 0);
             var ans = Transmit(req.ToBytes());
             err_code = ans.added_status;
@@ -23,10 +23,10 @@ namespace YHSES.Library
             return ans.status;
         }
 
-        public int WriteIOData(ushort number, byte data, out ushort err_code)
+        public int WriteByteData(ushort number, byte data, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                0x78, number, 1, 0x10,
+                0x7A, number, 1, 0x10,
                 new byte[1] { data }, 1);
             var ans = Transmit(req.ToBytes());
             err_code = ans.added_status;

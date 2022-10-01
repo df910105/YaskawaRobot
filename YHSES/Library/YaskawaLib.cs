@@ -28,7 +28,7 @@ using YHSES.Packet;
 
 namespace YHSES.Library
 {
-    public partial class YaskawaLib
+    public sealed partial class YaskawaLib
     {
         #region -- Field --
 

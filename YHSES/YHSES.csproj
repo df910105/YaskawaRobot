@@ -51,6 +51,12 @@
     <Compile Include="Library\YaskawaLib.RCC07.cs" />
     <Compile Include="Library\YaskawaLib.RCC08.cs" />
     <Compile Include="Library\YaskawaLib.RCC09.cs" />
+    <Compile Include="Library\YaskawaLib.RCC10.cs" />
+    <Compile Include="Library\YaskawaLib.RCC11.cs" />
+    <Compile Include="Library\YaskawaLib.RCC12.cs" />
+    <Compile Include="Library\YaskawaLib.RCC13.cs" />
+    <Compile Include="Library\YaskawaLib.RCC14.cs" />
+    <Compile Include="Library\YaskawaLib.RCC15.cs" />
     <Compile Include="Library\YaskawaLib.RCC20.cs" />
     <Compile Include="Library\YaskawaLib.RCC03.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
