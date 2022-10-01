@@ -9,7 +9,7 @@ namespace YHSES.Library
 {
     partial class YaskawaLib
     {
-        public int ReadPositionData(ushort robot_number, ref PosData config, out ushort err_code)
+        public int ReadRobotPosition(ushort robot_number, ref Posistion config, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x75, robot_number, 0, 0x01,
@@ -19,7 +19,7 @@ namespace YHSES.Library
             if (ans.status == ERROR_SUCCESS)
             {
                 config.DataType = BitConverter.ToUInt32(ans.data, 0);
-                config.Type = BitConverter.ToUInt32(ans.data, 4);
+                config.Figure = BitConverter.ToUInt32(ans.data, 4);
                 config.ToolNumber = BitConverter.ToUInt32(ans.data, 8);
                 config.UserCoordNumber = BitConverter.ToUInt32(ans.data, 12);
                 config.ExtendedType = BitConverter.ToUInt32(ans.data, 16);
@@ -36,25 +36,25 @@ namespace YHSES.Library
         }
     }
 
-    public class PosData
+    public class Posistion
     {
-        public uint DataType;
-        public uint Type;
-        public uint ToolNumber;
-        public uint UserCoordNumber;
-        public uint ExtendedType;
-        public AxisData AxisData;
+        public uint DataType = 0;
+        public uint Figure = 0;
+        public uint ToolNumber = 0;
+        public uint UserCoordNumber = 0;
+        public uint ExtendedType = 0;
+        public Axis AxisData;
     }
 
-    public class AxisData
+    public class Axis
     {
-        public int Axis_1;
-        public int Axis_2;
-        public int Axis_3;
-        public int Axis_4;
-        public int Axis_5;
-        public int Axis_6;
-        public int Axis_7;
-        public int Axis_8;
+        public int Axis_1 = 0;
+        public int Axis_2 = 0;
+        public int Axis_3 = 0;
+        public int Axis_4 = 0;
+        public int Axis_5 = 0;
+        public int Axis_6 = 0;
+        public int Axis_7 = 0;
+        public int Axis_8 = 0;
     }
 }

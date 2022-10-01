@@ -56,11 +56,6 @@ namespace YHSES.Library
         const uint TRAVEL_STATUS_END = 0xffffffff;
         const int TRAVEL_STATUS_ERROR = -1; //errno for details
 
-        // cycle selection command
-        const int CYCLE_TYPE_STEP = 1;
-        const int CYCLE_TYPE_ONE_CYCLE = 2;
-        const int CYCLE_TYPE_CONTINUOUS = 3;
-
         // move command
         const int MOVE_TYPE_JOINT_ABSOLUTE_POS = 1;
         const int MOVE_TYPE_LINEAR_ABSOLUTE_POS = 2;
@@ -72,10 +67,6 @@ namespace YHSES.Library
         const int MOVE_COORDINATE_SYSTEM_ROBOT = 17;
         const int MOVE_COORDINATE_SYSTEM_USER = 18;
         const int MOVE_COORDINATE_SYSTEM_TOOL = 19;
-
-        // reset alarm command
-        const int RESET_ALARM_TYPE_ALARM = 1;
-        const int RESET_ALARM_TYPE_ERROR = 2;
 
         #endregion
 

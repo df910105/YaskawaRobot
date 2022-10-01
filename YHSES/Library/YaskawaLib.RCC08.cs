@@ -9,7 +9,7 @@ namespace YHSES.Library
 {
     partial class YaskawaLib
     {
-        public int ReadTorqueData(ushort robot_number, ref AxisData data, out ushort err_code)
+        public int ReadTorqueData(ushort robot_number, ref Axis data, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x77, robot_number, 0, 0x01,

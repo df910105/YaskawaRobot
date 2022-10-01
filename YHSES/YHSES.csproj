@@ -57,8 +57,14 @@
     <Compile Include="Library\YaskawaLib.RCC13.cs" />
     <Compile Include="Library\YaskawaLib.RCC14.cs" />
     <Compile Include="Library\YaskawaLib.RCC15.cs" />
+    <Compile Include="Library\YaskawaLib.RCC16.cs" />
+    <Compile Include="Library\YaskawaLib.RCC19.cs" />
     <Compile Include="Library\YaskawaLib.RCC20.cs" />
     <Compile Include="Library\YaskawaLib.RCC03.cs" />
+    <Compile Include="Library\YaskawaLib.RCC21.cs" />
+    <Compile Include="Library\YaskawaLib.RCC22.cs" />
+    <Compile Include="Library\YaskawaLib.RCC23.cs" />
+    <Compile Include="Library\YaskawaLib.RCC24.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Packet\PacketAns.cs" />
     <Compile Include="Packet\PacketHeader.cs" />
