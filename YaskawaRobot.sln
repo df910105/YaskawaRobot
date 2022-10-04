@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YRCC", "YHSES\YRCC.csproj", "{DB863367-4A0B-41A9-8A57-203C2CF057FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YRCC", "YRCC\YRCC.csproj", "{DB863367-4A0B-41A9-8A57-203C2CF057FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{726E54F6-8906-4ED9-A8AA-5864263CB92B}"
 EndProject
