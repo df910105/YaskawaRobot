@@ -53,9 +53,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YHSES\YHSES.csproj">
+    <ProjectReference Include="..\YHSES\YRCC.csproj">
       <Project>{DB863367-4A0B-41A9-8A57-203C2CF057FB}</Project>
-      <Name>YHSES</Name>
+      <Name>YRCC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

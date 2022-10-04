@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using YHSES.Packet;
+using YRCC.Packet;
 
-namespace YHSES.Library
+namespace YRCC.Library
 {
-    partial class YaskawaLib
+    partial class YHSES
     {
         public int ReadStatusInfo(ref uint data_1, ref uint data_2, out ushort err_code)
         {

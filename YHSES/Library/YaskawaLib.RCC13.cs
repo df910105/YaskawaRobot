@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using YHSES.Packet;
+using YRCC.Packet;
 
-namespace YHSES.Library
+namespace YRCC.Library
 {
-    partial class YaskawaLib
+    partial class YHSES
     {
         public int ReadDIntData(ushort number, ref int data, out ushort err_code)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YHSES.Library;
+using YRCC.Library;
 
 namespace Example
 {
@@ -11,7 +11,7 @@ namespace Example
     {
         static void Main(string[] args)
         {
-            YaskawaLib yrc1000 = new YaskawaLib("192.168.255.1");
+            YHSES yrc1000 = new YHSES("192.168.255.1");
             yrc1000.ServoSwitch(POWER_SWITCH.OFF, out _);
             var alarm = new AlarmData();
             yrc1000.ReadAlarmData(0, ref alarm, out _);

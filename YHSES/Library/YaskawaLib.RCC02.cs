@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using YHSES.Packet;
+using YRCC.Packet;
 
-namespace YHSES.Library
+namespace YRCC.Library
 {
-    partial class YaskawaLib
+    partial class YHSES
     {
         public int ReadAlarmHistory(ushort alarm_number, ref AlarmData alarm, out ushort err_code)
         {

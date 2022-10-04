@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace YHSES.Packet
+namespace YRCC.Packet
 {
     class PacketAns
     {

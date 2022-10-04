@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using YHSES.Packet;
+using YRCC.Packet;
 
 /**
  * 
@@ -16,7 +16,7 @@ using YHSES.Packet;
  * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
- * See theGNU General Public License for more details.
+ * See the GNU General Public License for more details.
  * 
  * Greatest Thanks To:
  *    Hsinko Yu <hsinkoyu@fih-foxconn.com>
@@ -26,9 +26,9 @@ using YHSES.Packet;
  *    
  */
 
-namespace YHSES.Library
+namespace YRCC.Library
 {
-    public sealed partial class YaskawaLib
+    public sealed partial class YHSES
     {
         #region -- Field --
 
@@ -80,7 +80,7 @@ namespace YHSES.Library
 
         #endregion
 
-        public YaskawaLib(string ip, int timeout = 800)
+        public YHSES(string ip, int timeout = 800)
         {
             IP = ip;
             TimeOut = timeout;
