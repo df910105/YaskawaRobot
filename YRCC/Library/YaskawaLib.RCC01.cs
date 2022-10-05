@@ -30,10 +30,10 @@ namespace YRCC.Library
 
     public class AlarmData
     {
-        public DateTime Time;
-        public string Name;
-        public uint Code;
-        public uint Data;
-        public uint Type;
+        public DateTime Time = new DateTime();
+        public string Name = string.Empty;
+        public uint Code = 0;
+        public uint Data = 0;
+        public uint Type = 0;
     }
 }

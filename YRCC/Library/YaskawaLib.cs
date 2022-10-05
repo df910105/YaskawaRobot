@@ -73,8 +73,6 @@ namespace YRCC.Library
 
         public int TimeOut { get; private set; }
 
-        public int ErrNo { get; private set; }
-
         public int PORT_ROBOT_CONTROL { get; set; } = 10040;
 
         public int PORT_FILE_CONTROL { get; set; } = 10041;
@@ -87,7 +85,6 @@ namespace YRCC.Library
             {
                 IP = ip;
                 TimeOut = timeout;
-                ErrNo = 0;
                 socket.ReceiveTimeout = TimeOut;
                 socket.SendTimeout = TimeOut;
             }

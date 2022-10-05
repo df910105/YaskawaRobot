@@ -43,6 +43,16 @@ namespace YRCC.Library
         public uint UserCoordNumber = 0;
         public uint ExtendedType = 0;
         public Axis AxisData;
+
+        public override string ToString()
+        {
+            return $"DataType: {DataType},\r\n" +
+                $"Figure: {Figure},\r\n" +
+                $"ToolNumber: {ToolNumber},\r\n" +
+                $"UserCoordNumber: {UserCoordNumber},\r\n" +
+                $"ExtendedType: {ExtendedType},\r\n" +
+                $"AxisData:\r\n{AxisData}\r\n";
+        }
     }
 
     public class Axis
@@ -55,5 +65,18 @@ namespace YRCC.Library
         public int Axis_6 = 0;
         public int Axis_7 = 0;
         public int Axis_8 = 0;
+
+        public override string ToString()
+        {
+            return 
+                $"1: {Axis_1}, " +
+                $"2: {Axis_2}, " +
+                $"3: {Axis_3}, " +
+                $"4: {Axis_4}, " +
+                $"5: {Axis_5}, " +
+                $"6: {Axis_6}, " +
+                $"7: {Axis_7}, " +
+                $"8: {Axis_8}";
+        }
     }
 }

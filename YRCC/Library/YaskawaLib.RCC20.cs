@@ -8,7 +8,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int ServoSwitch(POWER_SWITCH on_off, out ushort err_code)
+        public int ServoSwitch(SWITCH on_off, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x83, (int)POWER_TYPE.SERVO, 0x01, 0x10,
@@ -18,7 +18,7 @@ namespace YRCC.Library
             return ans.status;
         }
 
-        public int HLockSwitch(POWER_SWITCH on_off, out ushort err_code)
+        public int HLockSwitch(SWITCH on_off, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x83, (int)POWER_TYPE.HLOCK, 0x01, 0x10,
@@ -28,7 +28,7 @@ namespace YRCC.Library
             return ans.status;
         }
 
-        public int HoldSwitch(POWER_SWITCH on_off, out ushort err_code)
+        public int HoldSwitch(SWITCH on_off, out ushort err_code)
         {
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x83, (int)POWER_TYPE.HOLD, 0x01, 0x10,
@@ -46,7 +46,7 @@ namespace YRCC.Library
         }
     }
 
-    public enum POWER_SWITCH : int
+    public enum SWITCH : int
     {
         ON = 1,
         OFF = 2,
