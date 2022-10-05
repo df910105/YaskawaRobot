@@ -144,9 +144,17 @@ namespace YRCC.Library
             lock (socket)
             {
                 bool to_disc = !socket.Connected;
-                if (!socket.Connected)
+                try
                 {
-                    Connect(port);
+                    if (!socket.Connected)
+                    {
+                        Connect(port);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
                 }
 
                 try

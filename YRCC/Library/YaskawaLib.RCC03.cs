@@ -10,32 +10,49 @@ namespace YRCC.Library
     {
         public int ReadStatusInfo(ref uint data_1, ref uint data_2, out ushort err_code)
         {
-            var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                0x72, 1, 0, 0x01,
-                new byte[0], 0);
-            var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
-            err_code = ans.added_status;
-            if (ans.status == ERROR_SUCCESS)
+            try
             {
-                data_1 = BitConverter.ToUInt32(ans.data, 0);
-                data_2 = BitConverter.ToUInt32(ans.data, 4);
+
+                var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
+                    0x72, 1, 0, 0x01,
+                    new byte[0], 0);
+                var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
+                err_code = ans.added_status;
+                if (ans.status == ERROR_SUCCESS)
+                {
+                    data_1 = BitConverter.ToUInt32(ans.data, 0);
+                    data_2 = BitConverter.ToUInt32(ans.data, 4);
+                }
+                return ans.status;
             }
-            return ans.status;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public int ReadStatusInfo(ref StatusInfo status, out ushort err_code)
         {
-            var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                0x72, 1, 0, 0x01,
-                new byte[0], 0);
-            var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
-            err_code = ans.added_status;
-            if (ans.status == ERROR_SUCCESS)
+            try
             {
-                status.Data1 = BitConverter.ToUInt32(ans.data, 0);
-                status.Data2 = BitConverter.ToUInt32(ans.data, 4);
+                var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
+                    0x72, 1, 0, 0x01,
+                    new byte[0], 0);
+                var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
+                err_code = ans.added_status;
+                if (ans.status == ERROR_SUCCESS)
+                {
+                    status.Data1 = BitConverter.ToUInt32(ans.data, 0);
+                    status.Data2 = BitConverter.ToUInt32(ans.data, 4);
+                }
+                return ans.status;
             }
-            return ans.status;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 

@@ -10,19 +10,27 @@ namespace YRCC.Library
     {
         public int ReadExecutingJob(ushort job_number, ref JobInfo job, out ushort err_code)
         {
-            var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                0x73, job_number, 0, 0x01,
-                new byte[0], 0);
-            var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
-            err_code = ans.added_status;
-            if (ans.status == ERROR_SUCCESS)
+            try
             {
-                job.JobName = utf_8.GetString(ans.data.Skip(0).Take(32).ToArray());
-                job.Line = BitConverter.ToUInt32(ans.data, 32);
-                job.Step = BitConverter.ToUInt32(ans.data, 36);
-                job.SpeedOverride = BitConverter.ToUInt32(ans.data, 40);
+                var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
+                    0x73, job_number, 0, 0x01,
+                    new byte[0], 0);
+                var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
+                err_code = ans.added_status;
+                if (ans.status == ERROR_SUCCESS)
+                {
+                    job.JobName = utf_8.GetString(ans.data.Skip(0).Take(32).ToArray());
+                    job.Line = BitConverter.ToUInt32(ans.data, 32);
+                    job.Step = BitConverter.ToUInt32(ans.data, 36);
+                    job.SpeedOverride = BitConverter.ToUInt32(ans.data, 40);
+                }
+                return ans.status;
             }
-            return ans.status;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 
