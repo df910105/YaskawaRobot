@@ -28,7 +28,7 @@ namespace YRCC.Library
             var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                 0x87, 1, 0x00, 0x02,
                 bytes, (ushort)bytes.Length);
-            var ans = Transmit(req.ToBytes());
+            var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
             err_code = ans.added_status;
             return ans.status;
         }

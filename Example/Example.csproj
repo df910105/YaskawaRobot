@@ -53,7 +53,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YHSES\YRCC.csproj">
+    <ProjectReference Include="..\YRCC\YRCC.csproj">
       <Project>{DB863367-4A0B-41A9-8A57-203C2CF057FB}</Project>
       <Name>YRCC</Name>
     </ProjectReference>

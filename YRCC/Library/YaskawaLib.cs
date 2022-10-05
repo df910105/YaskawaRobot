@@ -32,17 +32,14 @@ namespace YRCC.Library
     {
         #region -- Field --
 
-        UdpClient client = new UdpClient();
-        IPEndPoint endPoint;
+        Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
+        EndPoint endPoint;
 
         readonly Encoding ascii = Encoding.ASCII;
         readonly Encoding utf_8 = Encoding.UTF8;
         #endregion
 
         #region -- Constant --
-
-        const int UDP_PORT_ROBOT_CONTROL = 10040;
-        const int UDP_PORT_FILE_CONTROL = 10041;
 
         const int TRANSMISSION_SEND = 1;
         const int TRANSMISSION_SEND_AND_RECV = 2;
@@ -78,32 +75,57 @@ namespace YRCC.Library
 
         public int ErrNo { get; private set; }
 
+        public int PORT_ROBOT_CONTROL { get; set; } = 10040;
+
+        public int PORT_FILE_CONTROL { get; set; } = 10041;
+
         #endregion
 
         public YHSES(string ip, int timeout = 800)
         {
-            IP = ip;
-            TimeOut = timeout;
-            client = null;
-            ErrNo = 0;
+            try
+            {
+                IP = ip;
+                TimeOut = timeout;
+                ErrNo = 0;
+                socket.ReceiveTimeout = TimeOut;
+                socket.SendTimeout = TimeOut;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        private void Connect(int port = UDP_PORT_ROBOT_CONTROL)
+        private void Connect(int port)
         {
-            endPoint = new IPEndPoint(IPAddress.Parse(IP), port);
-            if (client == null)
+            try
             {
-                client = new UdpClient(endPoint);
-                client.Client.ReceiveTimeout = TimeOut;
+                if (socket == null)
+                {
+                    socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
+                }
+                endPoint = new IPEndPoint(IPAddress.Parse(IP), port);
+                socket.Bind(endPoint);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
         private void Disconnect()
         {
-            if (client != null)
+            try
             {
-                client.Close();
-                client.Dispose();
+                if (socket != null)
+                {
+                    socket.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -118,29 +140,24 @@ namespace YRCC.Library
                 .ToArray();
         }
 
-        private PacketAns Transmit(byte[] packet, int direction = TRANSMISSION_SEND_AND_RECV)
+        private PacketAns Transmit(byte[] packet, int port, int direction = TRANSMISSION_SEND_AND_RECV)
         {
             PacketAns ans = null;
-            byte[] ans_packet = null;
-            lock (client)
+            byte[] ans_packet = new byte[512];
+            lock (socket)
             {
+                bool to_disc = !socket.Connected;
+                if (!socket.Connected)
+                {
+                    Connect(port);
+                }
 
-                bool to_disc;
-                if (client.Client.Connected)
-                {
-                    to_disc = false;
-                }
-                else
-                {
-                    Connect();
-                    to_disc = true;
-                }
                 try
                 {
-                    client.Send(packet, packet.Length);
+                    socket.Send(packet);
                     if (direction == TRANSMISSION_SEND_AND_RECV)
                     {
-                        ans_packet = client.Receive(ref endPoint);
+                        int count = socket.Receive(ans_packet);
                     }
                 }
                 catch (SocketException ex)
