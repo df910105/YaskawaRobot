@@ -8,7 +8,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int ReadRobotPosition(ushort robot_number, ref Posistion config, out ushort err_code)
+        public int RobotPosR(ushort robot_number, ref Posistion config, out ushort err_code)
         {
             try
             {

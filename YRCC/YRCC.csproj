@@ -7,8 +7,8 @@
     <ProjectGuid>{DB863367-4A0B-41A9-8A57-203C2CF057FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YHSES</RootNamespace>
-    <AssemblyName>YHSES</AssemblyName>
+    <RootNamespace>YRCC</RootNamespace>
+    <AssemblyName>YRCC</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -58,6 +58,8 @@
     <Compile Include="Library\YaskawaLib.RCC14.cs" />
     <Compile Include="Library\YaskawaLib.RCC15.cs" />
     <Compile Include="Library\YaskawaLib.RCC16.cs" />
+    <Compile Include="Library\YaskawaLib.RCC17.cs" />
+    <Compile Include="Library\YaskawaLib.RCC18.cs" />
     <Compile Include="Library\YaskawaLib.RCC19.cs" />
     <Compile Include="Library\YaskawaLib.RCC20.cs" />
     <Compile Include="Library\YaskawaLib.RCC03.cs" />

@@ -26,24 +26,24 @@ namespace Example
 
                 //RCC06
                 Posistion r = new Posistion();
-                rt = yrc1000.ReadRobotPosition(0, ref r, out err);
+                rt = yrc1000.RobotPosR(0, ref r, out err);
                 ErrMsg(rt, err);
                 Console.WriteLine(r);
 
                 //RCC16
                 Posistion p = new Posistion();
-                rt = yrc1000.ReadPositionData(0, ref p, out err);
+                rt = yrc1000.PosDataR(0, ref p, out err);
                 ErrMsg(rt, err);
                 Console.WriteLine(p);
-                rt = yrc1000.ReadPositionData(1, ref p, out err);
+                rt = yrc1000.PosDataR(1, ref p, out err);
                 ErrMsg(rt, err);
                 Console.WriteLine(p);
-                rt = yrc1000.ReadPositionData(2, ref p, out err);
+                rt = yrc1000.PosDataR(2, ref p, out err);
                 Console.WriteLine(p);
                 ErrMsg(rt, err);
 
-                //RCC20
-                rt = yrc1000.ServoSwitch(SWITCH.ON, out err);
+                 //RCC20
+                 rt = yrc1000.ServoSwitch(SWITCH.ON, out err);
                 ErrMsg(rt, err);
                 SpinWait.SpinUntil(() => false, 5000);
                 rt = yrc1000.ServoSwitch(SWITCH.OFF, out err);
