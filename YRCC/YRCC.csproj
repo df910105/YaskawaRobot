@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library\YHSES.FCC01.cs" />
     <Compile Include="Library\YHSES.RCC01.cs" />
     <Compile Include="Library\YHSES.cs" />
     <Compile Include="Library\YHSES.RCC02.cs" />
