@@ -65,6 +65,16 @@ namespace YRCC.Library
         const int MOVE_COORDINATE_SYSTEM_USER = 18;
         const int MOVE_COORDINATE_SYSTEM_TOOL = 19;
 
+        /// <summary>
+        /// Ex:2011/10/10 15:49
+        /// </summary>
+        const string DATE_PATTERN = @"yyyy/MM/dd HH\:mm";
+
+        /// <summary>
+        /// Ex:000000:00'00
+        /// </summary>
+        const string TIME_PATTERN = @"%h:mm'ss";
+
         #endregion
 
         #region -- Property --
