@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC09] 讀取IO資料 (0x78)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadIOData(ushort number, ref byte data, out ushort err_code)
         {
             try
@@ -30,6 +39,13 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// [RCC09] 寫入IO資料 (0x78). Only network input signal is writable. ex.2701 to 2956.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int WriteIOData(ushort number, byte data, out ushort err_code)
         {
             try

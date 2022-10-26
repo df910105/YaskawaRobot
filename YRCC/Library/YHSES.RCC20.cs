@@ -11,7 +11,7 @@ namespace YRCC.Library
         /// 本頁功能確認於 2022/10/26 by Willy
 
         /// <summary>
-        /// 伺服切換開關
+        /// [RCC20] 伺服切換開關 (0x83)
         /// </summary>
         /// <param name="on_off"></param>
         /// <param name="err_code"></param>
@@ -35,7 +35,7 @@ namespace YRCC.Library
         }
 
         /// <summary>
-        /// 螢幕鎖定切換開關
+        /// [RCC20] 螢幕鎖定切換開關 (0x83)
         /// </summary>
         /// <param name="on_off"></param>
         /// <param name="err_code"></param>
@@ -59,7 +59,7 @@ namespace YRCC.Library
         }
 
         /// <summary>
-        /// 手臂暫停切換開關
+        /// [RCC20] 手臂暫停切換開關 (0x83)
         /// </summary>
         /// <param name="on_off"></param>
         /// <param name="err_code"></param>

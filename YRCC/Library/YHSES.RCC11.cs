@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC11] 讀取位元組資料 (0x7A)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadByteData(ushort number, ref byte data, out ushort err_code)
         {
             try
@@ -30,6 +39,13 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// [RCC11] 寫入位元組資料 (0x7A)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int WriteByteData(ushort number, byte data, out ushort err_code)
         {
             try

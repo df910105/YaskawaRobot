@@ -8,6 +8,13 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// <summary>
+        /// [RCC06] 讀取手臂位置 (0x75)
+        /// </summary>
+        /// <param name="robot_number"></param>
+        /// <param name="config"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int RobotPosR(ushort robot_number, ref Posistion config, out ushort err_code)
         {
             try

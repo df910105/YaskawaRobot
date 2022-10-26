@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+        
+        /// <summary>
+        /// [RCC10] 讀取暫存器資料 (0x79)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadRegData(ushort number, ref ushort data, out ushort err_code)
         {
             try
@@ -30,6 +39,13 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// [RCC10] 寫入暫存器資料 (0x79). Register 0 to 599 is writable.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int WriteRegData(ushort number, ushort data, out ushort err_code)
         {
             try

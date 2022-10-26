@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC13] 讀取倍精度型(int)資料 (0x7C)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadDIntData(ushort number, ref int data, out ushort err_code)
         {
             try
@@ -30,6 +39,13 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// [RCC13] 寫入倍精度型(int)資料 (0x7C)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int WriteDIntData(ushort number, int data, out ushort err_code)
         {
             try

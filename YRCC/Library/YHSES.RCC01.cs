@@ -9,7 +9,7 @@ namespace YRCC.Library
     partial class YHSES
     {
         /// <summary>
-        /// 讀取手臂警告資訊 (0x70)
+        /// [RCC01] 讀取手臂警告資訊 (0x70)
         /// </summary>
         /// <param name="last_number">Range: 1st - 4th.</param>
         /// <param name="alarm">Alarm Data</param>

@@ -8,7 +8,16 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int ReadIntData(ushort number, ref ushort data, out ushort err_code)
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC12] 讀取整數型(short)資料 (0x7B)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
+        public int ReadIntData(ushort number, ref short data, out ushort err_code)
         {
             try
             {
@@ -19,7 +28,7 @@ namespace YRCC.Library
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    data = BitConverter.ToUInt16(ans.data, 0);
+                    data = BitConverter.ToInt16(ans.data, 0);
                 }
                 return ans.status;
             }
@@ -30,7 +39,14 @@ namespace YRCC.Library
             }
         }
 
-        public int WriteIntData(ushort number, ushort data, out ushort err_code)
+        /// <summary>
+        /// [RCC12] 寫入整數型(short)資料 (0x7B)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
+        public int WriteIntData(ushort number, short data, out ushort err_code)
         {
             try
             {
