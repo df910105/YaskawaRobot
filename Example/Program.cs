@@ -26,9 +26,14 @@ namespace Example
 
                 //RCC06
                 Posistion r = new Posistion();
-                rt = yrc1000.RobotPosR(0, ref r, out err);
+                rt = yrc1000.RobotPosR(1, ref r, out err);
                 ErrMsg(rt, err);
                 Console.WriteLine(r);
+                //RCC06
+                Posistion r1 = new Posistion();
+                rt = yrc1000.RobotPosR(101, ref r1, out err);
+                ErrMsg(rt, err);
+                Console.WriteLine(r1);
 
                 //RCC16
                 Posistion p = new Posistion();
@@ -42,8 +47,8 @@ namespace Example
                 Console.WriteLine(p);
                 ErrMsg(rt, err);
 
-                 //RCC20
-                 rt = yrc1000.ServoSwitch(SWITCH.ON, out err);
+                //RCC20
+                /*rt = yrc1000.ServoSwitch(SWITCH.ON, out err);
                 ErrMsg(rt, err);
                 SpinWait.SpinUntil(() => false, 5000);
                 rt = yrc1000.ServoSwitch(SWITCH.OFF, out err);
@@ -60,7 +65,7 @@ namespace Example
                 ErrMsg(rt, err);
                 SpinWait.SpinUntil(() => false, 2000);
                 rt = yrc1000.SwitchCycleType(CYCLE_TYPE.Cycle, out err);
-                ErrMsg(rt, err);
+                ErrMsg(rt, err); */
 
             }
             catch (Exception ex)

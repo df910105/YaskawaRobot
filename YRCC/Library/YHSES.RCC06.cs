@@ -30,8 +30,14 @@ namespace YRCC.Library
                     config.AxisData.Axis_4 = BitConverter.ToInt32(ans.data, 32);
                     config.AxisData.Axis_5 = BitConverter.ToInt32(ans.data, 36);
                     config.AxisData.Axis_6 = BitConverter.ToInt32(ans.data, 40);
-                    config.AxisData.Axis_7 = BitConverter.ToInt32(ans.data, 44);
-                    config.AxisData.Axis_8 = BitConverter.ToInt32(ans.data, 48);
+                    if (ans.data.Length >= 48)
+                    {
+                        config.AxisData.Axis_7 = BitConverter.ToInt32(ans.data, 44);
+                    }
+                    if (ans.data.Length >= 52)
+                    {
+                        config.AxisData.Axis_8 = BitConverter.ToInt32(ans.data, 48);
+                    }
                 }
                 return ans.status;
 
@@ -51,16 +57,40 @@ namespace YRCC.Library
         public uint ToolNumber = 0;
         public uint UserCoordNumber = 0;
         public uint ExtendedType = 0;
-        public Axis AxisData;
+        public Axis AxisData = new Axis();
 
         public override string ToString()
         {
-            return $"DataType: {DataType},\r\n" +
-                $"Figure: {Figure},\r\n" +
-                $"ToolNumber: {ToolNumber},\r\n" +
-                $"UserCoordNumber: {UserCoordNumber},\r\n" +
-                $"ExtendedType: {ExtendedType},\r\n" +
-                $"AxisData:\r\n{AxisData}\r\n";
+            if (DataType == 0)
+            {
+                return $"DataType: {DataType} (Pulse),\r\n" +
+                  $"Figure: {Figure},\r\n" +
+                  $"ToolNumber: {ToolNumber},\r\n" +
+                  $"UserCoordNumber: {UserCoordNumber},\r\n" +
+                  $"ExtendedType: {ExtendedType},\r\n" +
+                  $"AxisData:\r\n{AxisData}\r\n";
+            }
+            else if (DataType == 16)
+            {
+                return $"DataType: {DataType} (Coordinate),\r\n" +
+                  $"Figure: {Figure},\r\n" +
+                  $"ToolNumber: {ToolNumber},\r\n" +
+                  $"UserCoordNumber: {UserCoordNumber},\r\n" +
+                  $"ExtendedType: {ExtendedType},\r\n" +
+                  $"AxisData:\r\n" +
+                  $"X: {AxisData.Axis_1 / 1000.0:0.000}, " +
+                  $"Y: {AxisData.Axis_2 / 1000.0:0.000}, " +
+                  $"Z: {AxisData.Axis_3 / 1000.0:0.000}, " +
+                  $"Rx: {AxisData.Axis_4 / 10000.0:0.0000}, " +
+                  $"Ry: {AxisData.Axis_5 / 10000.0:0.0000}, " +
+                  $"Rz: {AxisData.Axis_6 / 10000.0:0.0000}, " +
+                  $"ax7: {AxisData.Axis_7}, " +
+                  $"ax8: {AxisData.Axis_8}\r\n";
+            }
+            else
+            {
+                return "Undefined data type";
+            }
         }
     }
 

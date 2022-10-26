@@ -108,12 +108,13 @@ namespace YRCC.Library
         {
             try
             {
-                if (socket == null)
+                if (!socket .Connected)
                 {
+                    socket.Dispose();
                     socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
                 }
                 endPoint = new IPEndPoint(IPAddress.Parse(IP), port);
-                socket.Bind(endPoint);
+                socket.Connect(endPoint);
             }
             catch (Exception)
             {

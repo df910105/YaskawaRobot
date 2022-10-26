@@ -8,6 +8,14 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// 伺服切換開關
+        /// </summary>
+        /// <param name="on_off"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ServoSwitch(SWITCH on_off, out ushort err_code)
         {
             try
@@ -26,6 +34,12 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// 螢幕鎖定切換開關
+        /// </summary>
+        /// <param name="on_off"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int HLockSwitch(SWITCH on_off, out ushort err_code)
         {
             try
@@ -44,6 +58,12 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// 手臂暫停切換開關
+        /// </summary>
+        /// <param name="on_off"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int HoldSwitch(SWITCH on_off, out ushort err_code)
         {
             try

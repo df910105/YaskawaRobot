@@ -30,7 +30,11 @@ namespace YRCC.Library
                     alarm.Data = BitConverter.ToUInt32(ans.data, 4);
                     alarm.Type = BitConverter.ToUInt32(ans.data, 8);
                     string timeString = ascii.GetString(ans.data.Skip(12).Take(16).ToArray());
-                    alarm.Time = DateTime.ParseExact(timeString, DATE_PATTERN, null);
+                    if (DateTime.TryParseExact(timeString, DATE_PATTERN, null,
+                        System.Globalization.DateTimeStyles.None, out DateTime dateTime))
+                    {
+                        alarm.Time = dateTime;
+                    }
                     alarm.Name = utf_8.GetString(ans.data.Skip(28).Take(32).ToArray());
                 }
                 return ans.status;
