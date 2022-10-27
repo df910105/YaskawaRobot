@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC14] 讀取實數型(float)資料 (0x7D)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadRealData(ushort number, ref float data, out ushort err_code)
         {
             try
@@ -30,6 +39,13 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// [RCC14] 寫入實數型(float)資料 (0x7D)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="data"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int WriteRealData(ushort number, float data, out ushort err_code)
         {
             try

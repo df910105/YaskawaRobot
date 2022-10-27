@@ -37,6 +37,7 @@ namespace YRCC.Library
 
         readonly Encoding ascii = Encoding.ASCII;
         readonly Encoding utf_8 = Encoding.UTF8;
+        readonly Encoding big5 = Encoding.GetEncoding("big5");
         #endregion
 
         #region -- Constant --

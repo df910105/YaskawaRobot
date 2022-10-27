@@ -8,6 +8,13 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/27 by Willy
+
+        /// <summary>
+        /// 重置警報
+        /// </summary>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int AlarmReset(out ushort err_code)
         {
             try
@@ -26,6 +33,11 @@ namespace YRCC.Library
             }
         }
 
+        /// <summary>
+        /// 取消錯誤
+        /// </summary>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ErrorCancel(out ushort err_code)
         {
             try

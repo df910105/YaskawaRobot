@@ -8,11 +8,19 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int PosDataR(ushort number, ref Posistion config, out ushort err_code)
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC16] 讀取機器人位置資料 (0x7F)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="config"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
+        public int ReadPosData(ushort number, ref Posistion config, out ushort err_code)
         {
             try
             {
-
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                     0x7F, number, 0, 0x01,
                     new byte[0], 0);
@@ -43,11 +51,17 @@ namespace YRCC.Library
             }
         }
 
-        public int PosDataW(ushort number, Posistion config, out ushort err_code)
+        /// <summary>
+        /// [RCC16] 寫入機器人位置資料 (0x7F)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="config"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
+        public int WritePosData(ushort number, Posistion config, out ushort err_code)
         {
             try
             {
-
                 var bytes = ParsePositionDataBytes(config);
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                     0x7F, number, 0, 0x02,

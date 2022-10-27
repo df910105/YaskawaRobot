@@ -8,6 +8,8 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
         /// <summary>
         /// [RCC06] 讀取手臂位置 (0x75)
         /// </summary>
@@ -15,7 +17,7 @@ namespace YRCC.Library
         /// <param name="config"></param>
         /// <param name="err_code"></param>
         /// <returns></returns>
-        public int RobotPosR(ushort robot_number, ref Posistion config, out ushort err_code)
+        public int ReadRobotPos(ushort robot_number, ref Posistion config, out ushort err_code)
         {
             try
             {
@@ -57,6 +59,9 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 機器人位置原始資訊，請留意型態(pulse/coord)以及轉換coord的單位。
+    /// </summary>
     public class Posistion
     {
         public uint DataType = 0;

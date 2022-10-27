@@ -8,11 +8,13 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/27 by Willy
+
         /// <summary>
-        /// [RCC01] 讀取手臂警告資訊 (0x70)
+        /// [RCC01] 讀取目前異常資訊 (0x70)
         /// </summary>
         /// <param name="last_number">Range: 1st - 4th.</param>
-        /// <param name="alarm">Alarm Data</param>
+        /// <param name="alarm"></param>
         /// <param name="err_code"></param>
         /// <returns></returns>
         public int ReadAlarmData(ushort last_number, ref AlarmData alarm, out ushort err_code)
@@ -26,16 +28,7 @@ namespace YRCC.Library
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    alarm.Code = BitConverter.ToUInt32(ans.data, 0);
-                    alarm.Data = BitConverter.ToUInt32(ans.data, 4);
-                    alarm.Type = BitConverter.ToUInt32(ans.data, 8);
-                    string timeString = ascii.GetString(ans.data.Skip(12).Take(16).ToArray());
-                    if (DateTime.TryParseExact(timeString, DATE_PATTERN, null,
-                        System.Globalization.DateTimeStyles.None, out DateTime dateTime))
-                    {
-                        alarm.Time = dateTime;
-                    }
-                    alarm.Name = utf_8.GetString(ans.data.Skip(28).Take(32).ToArray());
+                    AlarmDataDecode(alarm, ans.data);
                 }
                 return ans.status;
             }
@@ -44,6 +37,20 @@ namespace YRCC.Library
 
                 throw;
             }
+        }
+
+        private void AlarmDataDecode(AlarmData alarm, byte[] packetData)
+        {
+            alarm.Code = BitConverter.ToUInt32(packetData, 0);
+            alarm.Data = BitConverter.ToUInt32(packetData, 4);
+            alarm.Type = BitConverter.ToUInt32(packetData, 8);
+            string timeString = ascii.GetString(packetData.Skip(12).Take(16).ToArray());
+            if (DateTime.TryParseExact(timeString, DATE_PATTERN, null,
+                System.Globalization.DateTimeStyles.None, out DateTime dateTime))
+            {
+                alarm.Time = dateTime;
+            }
+            alarm.Name = big5.GetString(packetData.Skip(28).Take(32).ToArray()).TrimEnd('\0');
         }
     }
 
@@ -54,5 +61,22 @@ namespace YRCC.Library
         public uint Code = 0;
         public uint Data = 0;
         public uint Type = 0;
+
+        public override string ToString()
+        {
+            return $"Time: {Time:g}\r\n" +
+                $"Name: {Name}\r\n" +
+                $"Code: {Code}, " +
+                $"Data: {Data}, " +
+                $"Type: {Type}";
+        }
+    }
+
+    public enum AlarmType : uint
+    {
+        //待補, 或改成Dictionary結構
+        NoAlarm = 0,
+
+        SLURBT = 3,
     }
 }

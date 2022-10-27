@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC04] 讀取目前執行程式 (0x73)
+        /// </summary>
+        /// <param name="job_number"></param>
+        /// <param name="job"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadExecutingJob(ushort job_number, ref JobInfo job, out ushort err_code)
         {
             try
@@ -40,5 +49,13 @@ namespace YRCC.Library
         public uint Line = 0;
         public uint Step = 0;
         public uint SpeedOverride = 0;
+
+        public override string ToString()
+        {
+            return $"JobName: {JobName}\r\n" +
+                $"Line: {Line}, " +
+                $"Step: {Step}, " +
+                $"SpeedOverride: {SpeedOverride}";
+        }
     }
 }

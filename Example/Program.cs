@@ -19,17 +19,10 @@ namespace Example
 
             try
             {
-                //RCC13
-                int i32 = 0;
-                rt = yrc1000.ReadDIntData(0, ref i32, out err);
-                Console.WriteLine(i32);
+                //RCC19
+                rt = yrc1000.AlarmReset(out err);
                 ErrMsg(rt, err);
-                i32 = int.MinValue;
-                Console.WriteLine(i32);
-                rt = yrc1000.WriteDIntData(0, i32, out err);
-                ErrMsg(rt, err);
-                rt = yrc1000.ReadDIntData(0, ref i32, out err);
-                Console.WriteLine(i32);
+                rt = yrc1000.ErrorCancel(out err);
                 ErrMsg(rt, err);
 
                 #region -- Tested--
@@ -39,6 +32,34 @@ namespace Example
                 //RCC01
                 var alarm = new AlarmData();
                 rt = yrc1000.ReadAlarmData(0, ref alarm, out err);
+                Console.WriteLine(alarm);
+                ErrMsg(rt, err);
+
+                //RCC02
+                rt = yrc1000.ReadAlarmHistory(1001, ref alarm, out err);
+                Console.WriteLine(alarm);
+                ErrMsg(rt, err);
+                rt = yrc1000.ReadAlarmHistory(1002, ref alarm, out err);
+                Console.WriteLine(alarm);
+                ErrMsg(rt, err);
+                rt = yrc1000.ReadAlarmHistory(1003, ref alarm, out err);
+                Console.WriteLine(alarm);
+                ErrMsg(rt, err);
+
+                //RCC03
+                uint d1 = 0, d2 = 0;
+                StatusInfo statusInfo = new StatusInfo();
+                rt = yrc1000.ReadStatusInfo(ref d1, ref d2, out err);
+                Console.WriteLine($"{d1}, {d2}");
+                ErrMsg(rt, err);
+                rt = yrc1000.ReadStatusInfo(ref statusInfo, out err);
+                Console.WriteLine(statusInfo);
+                ErrMsg(rt, err);
+
+                //RCC04
+                var jobinfo = new JobInfo();
+                rt = yrc1000.ReadExecutingJob(1, ref jobinfo, out err);
+                Console.WriteLine(jobinfo);
                 ErrMsg(rt, err);
 
                 //RCC06
@@ -115,6 +136,33 @@ namespace Example
                 ErrMsg(rt, err);
                 rt = yrc1000.ReadDIntData(0, ref i32, out err);
                 Console.WriteLine(i32);
+                ErrMsg(rt, err);
+                
+                //RCC14
+                Random random = new Random();
+                float real = 0;
+                rt = yrc1000.ReadRealData(0, ref real, out err);
+                Console.WriteLine(real);
+                ErrMsg(rt, err);
+                real = random.Next();
+                Console.WriteLine(real);
+                rt = yrc1000.WriteRealData(0, real, out err);
+                ErrMsg(rt, err);
+                rt = yrc1000.ReadRealData(0, ref real, out err);
+                Console.WriteLine(real);
+                ErrMsg(rt, err);
+                
+                //RCC15
+                string str = string.Empty;
+                rt = yrc1000.ReadStrData(0, ref str, out err);
+                Console.WriteLine(str);
+                ErrMsg(rt, err);
+                str = "中文123456abcdefghijklmn";
+                Console.WriteLine(str);
+                rt = yrc1000.WriteStrData(0, str, out err);
+                ErrMsg(rt, err);
+                rt = yrc1000.ReadStrData(0, ref str, out err);
+                Console.WriteLine(str);
                 ErrMsg(rt, err);
 
                 //RCC16

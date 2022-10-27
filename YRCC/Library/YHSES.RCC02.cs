@@ -8,6 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/27 by Willy
+
+        /// <summary>
+        /// [RCC02] 讀取歷史異常資訊 (0x71)
+        /// </summary>
+        /// <param name="alarm_number">Range: 請參考手冊</param>
+        /// <param name="alarm"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadAlarmHistory(ushort alarm_number, ref AlarmData alarm, out ushort err_code)
         {
             try
@@ -19,13 +28,7 @@ namespace YRCC.Library
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    alarm.Code = BitConverter.ToUInt32(ans.data, 0);
-                    alarm.Data = BitConverter.ToUInt32(ans.data, 4);
-                    alarm.Type = BitConverter.ToUInt32(ans.data, 8);
-                    string timeString = ascii.GetString(ans.data.Skip(12).Take(16).ToArray());
-                    alarm.Time = DateTime.ParseExact(timeString, DATE_PATTERN, null);
-                    string nameString = utf_8.GetString(ans.data.Skip(28).Take(32).ToArray());
-                    alarm.Name = nameString;
+                    AlarmDataDecode(alarm, ans.data);
                 }
                 return ans.status;
 
