@@ -8,6 +8,14 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/26 by Willy
+
+        /// <summary>
+        /// [RCC21] 循環動作指令 (0x84)
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int SwitchCycleType(CYCLE_TYPE type, out ushort err_code)
         {
             try
@@ -29,8 +37,19 @@ namespace YRCC.Library
 
     public enum CYCLE_TYPE : uint
     {
+        /// <summary>
+        /// 單步
+        /// </summary>
         Step = 1,
+
+        /// <summary>
+        /// 單次循環
+        /// </summary>
         Cycle = 2,
+
+        /// <summary>
+        /// 連續循環
+        /// </summary>
         AUTO = 3,
     }
 }

@@ -11,7 +11,7 @@ namespace YRCC.Library
         /// 本頁功能確認於 2022/10/27 by Willy
 
         /// <summary>
-        /// 重置警報
+        /// [RCC19] 重置警報 (0x82)
         /// </summary>
         /// <param name="err_code"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace YRCC.Library
         }
 
         /// <summary>
-        /// 取消錯誤
+        /// [RCC19] 取消錯誤 (0x82)
         /// </summary>
         /// <param name="err_code"></param>
         /// <returns></returns>

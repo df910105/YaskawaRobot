@@ -19,10 +19,7 @@ namespace Example
 
             try
             {
-                //RCC19
-                rt = yrc1000.AlarmReset(out err);
-                ErrMsg(rt, err);
-                rt = yrc1000.ErrorCancel(out err);
+                rt = yrc1000.SelectJob("TEST", 0, out err);
                 ErrMsg(rt, err);
 
                 #region -- Tested--
@@ -191,7 +188,13 @@ namespace Example
                 p.DataType = 0;
                 Console.WriteLine(p);
                 rt = yrc1000.PosDataW(3, p, out err);
-                ErrMsg(rt, err);                
+                ErrMsg(rt, err);
+
+                //RCC19
+                rt = yrc1000.AlarmReset(out err);
+                ErrMsg(rt, err);
+                rt = yrc1000.ErrorCancel(out err);
+                ErrMsg(rt, err);            
 
                 //RCC20
                 rt = yrc1000.ServoSwitch(SWITCH.ON, out err);
@@ -211,7 +214,12 @@ namespace Example
                 ErrMsg(rt, err);
                 SpinWait.SpinUntil(() => false, 2000);
                 rt = yrc1000.SwitchCycleType(CYCLE_TYPE.Cycle, out err);
-                ErrMsg(rt, err); */
+                ErrMsg(rt, err); 
+
+                //RCC22
+                rt = yrc1000.DisplayMessage("安安安安安安安安安安安", out err);
+                ErrMsg(rt, err);*/
+
                 #endregion
 
             }
