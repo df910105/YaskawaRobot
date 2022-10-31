@@ -6,14 +6,43 @@ namespace Example
 {
     class Program
     {
+        static YHSES yrc1000 = new YHSES("192.168.255.1");
+        static int countT1 = 0;
+        static int countT2 = 0;
+
+        private static void Callback(object state)
+        {
+            int rt;
+            ushort err;
+            SystemInfo systemInfo = new SystemInfo();
+            rt = ((YHSES)state).ReadSystemInfoData(11, ref systemInfo, out err);
+            Console.WriteLine(systemInfo);
+            ErrMsg(rt, err);
+            countT1++;
+            Console.WriteLine($"count thread1: {countT1}");
+        }
+
+        private static void Callback2(object state)
+        {
+            int rt;
+            ushort err;
+            byte b0 = 0;
+            rt = ((YHSES)state).ReadByteData(1, ref b0, out err);
+            Console.WriteLine(b0);
+            ErrMsg(rt, err);
+            countT2++;
+            Console.WriteLine($"count thread2: {countT2}");
+        }
 
         static void Main(string[] args)
         {
+            Timer timer = new Timer(Callback, yrc1000, 1, 25);
+            Timer timer2 = new Timer(Callback2, yrc1000, 1, 25);
+
             int rt;
             ushort err;
 
             //Initial.
-            YHSES yrc1000 = new YHSES("192.168.255.1");
             Console.WriteLine("Robot safety check before press ENTER!!!");
             Console.ReadLine();
 

@@ -35,6 +35,7 @@ namespace YRCC.Library
         Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
         EndPoint endPoint;
 
+        private readonly object SocketLock = new object();
         readonly Encoding ascii = Encoding.ASCII;
         readonly Encoding utf_8 = Encoding.UTF8;
         readonly Encoding big5 = Encoding.GetEncoding("big5");
@@ -47,24 +48,6 @@ namespace YRCC.Library
 
         const int ERROR_SUCCESS = 0;
         const int ERROR_CONNECTION = 1;
-        const int ERROR_NO_SUCH_FILE_OR_DIRECTORY = 2;
-
-        const double TRAVEL_STATUS_POLLING_DURATION = 0.1;
-        const int TRAVEL_STATUS_START = 0;
-        const uint TRAVEL_STATUS_END = 0xffffffff;
-        const int TRAVEL_STATUS_ERROR = -1; //errno for details
-
-        // move command
-        const int MOVE_TYPE_JOINT_ABSOLUTE_POS = 1;
-        const int MOVE_TYPE_LINEAR_ABSOLUTE_POS = 2;
-        const int MOVE_TYPE_LINEAR_INCREMENTAL_POS = 3;
-        const int MOVE_SPEED_CLASS_PERCENT = 0;  // for joint operation
-        const int MOVE_SPEED_CLASS_MILLIMETER = 1;
-        const int MOVE_SPEED_CLASS_DEGREE = 2;
-        const int MOVE_COORDINATE_SYSTEM_BASE = 16;
-        const int MOVE_COORDINATE_SYSTEM_ROBOT = 17;
-        const int MOVE_COORDINATE_SYSTEM_USER = 18;
-        const int MOVE_COORDINATE_SYSTEM_TOOL = 19;
 
         /// <summary>
         /// Ex:2011/10/10 15:49
@@ -104,7 +87,7 @@ namespace YRCC.Library
         {
             try
             {
-                if (!socket .Connected)
+                if (!socket.Connected)
                 {
                     socket.Dispose();
                     socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
@@ -125,6 +108,7 @@ namespace YRCC.Library
                 if (socket != null)
                 {
                     socket.Close();
+                    socket.Dispose();
                 }
             }
             catch (Exception)
@@ -148,7 +132,7 @@ namespace YRCC.Library
         {
             PacketAns ans = null;
             byte[] ans_packet = new byte[512];
-            lock (socket)
+            lock (SocketLock)
             {
                 bool to_disc = !socket.Connected;
                 try
