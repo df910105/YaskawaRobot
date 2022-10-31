@@ -9,12 +9,21 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int SyStemInfoDataR(ushort number, ref SystemInfo info, out ushort err_code)
+        /// 本頁功能確認於 2022/10/31 by Willy
+
+        /// <summary>
+        /// [RCC26] 讀取版本序號 (0x89)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="info"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
+        public int SystemInfoDataR(ushort number, ref SystemInfo info, out ushort err_code)
         {
             try
             {
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
-                    0x88, number, 0, 0x01,
+                    0x89, number, 0, 0x01,
                     new byte[0], 0);
                 var ans = Transmit(req.ToBytes(), PORT_ROBOT_CONTROL);
                 err_code = ans.added_status;

@@ -19,8 +19,18 @@ namespace Example
 
             try
             {
-                rt = yrc1000.SelectJob("TEST", 0, out err);
+                //RCC25
+                Time time = new Time();
+                rt = yrc1000.TimeDataR(1, ref time, out err);
+                Console.WriteLine(time);
                 ErrMsg(rt, err);
+
+                //RCC25
+                SystemInfo systemInfo = new SystemInfo();
+                rt = yrc1000.SystemInfoDataR(11, ref systemInfo, out err);
+                Console.WriteLine(systemInfo);
+                ErrMsg(rt, err);
+
 
                 #region -- Tested--
                 Console.WriteLine("----------Tested----------\r\n");
@@ -218,7 +228,17 @@ namespace Example
 
                 //RCC22
                 rt = yrc1000.DisplayMessage("安安安安安安安安安安安", out err);
-                ErrMsg(rt, err);*/
+                ErrMsg(rt, err);                
+                
+                //RCC23
+                rt = yrc1000.StartJob(out err);
+                ErrMsg(rt, err);
+
+                //RCC24
+                rt = yrc1000.SelectJob("TEST", 0, out err);
+                ErrMsg(rt, err);
+                 
+                */
 
                 #endregion
 

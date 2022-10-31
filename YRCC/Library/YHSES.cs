@@ -71,11 +71,6 @@ namespace YRCC.Library
         /// </summary>
         const string DATE_PATTERN = @"yyyy/MM/dd HH\:mm";
 
-        /// <summary>
-        /// Ex:000000:00'00
-        /// </summary>
-        const string TIME_PATTERN = @"%h:mm'ss";
-
         #endregion
 
         #region -- Property --

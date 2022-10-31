@@ -9,6 +9,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/31 by Willy
+
+        /// <summary>
+        /// [RCC25] 讀取系統管理時間 (0x88)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="time"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int TimeDataR(ushort number, ref Time time, out ushort err_code)
         {
             try
@@ -22,8 +31,15 @@ namespace YRCC.Library
                 {
                     string dateString = ascii.GetString(ans.data.Skip(0).Take(16).ToArray());
                     time.DateStart = DateTime.ParseExact(dateString, DATE_PATTERN, null);
-                    string timeString = ascii.GetString(ans.data.Skip(16).Take(12).ToArray());
-                    time.TimeElapsed = TimeSpan.ParseExact(dateString, TIME_PATTERN, null);
+
+                    //PATTERN：%h:mm'ss
+                    string timeString = ascii.GetString(ans.data.Skip(16).Take(12).ToArray()).TrimEnd('\0');
+                    string[] temp0 = timeString.Split(':'); 
+                    string[] temp1 = temp0.Last().Split('\'');
+                    int hh = int.Parse(temp0.First());
+                    int mm = int.Parse(temp1.First());
+                    int ss = int.Parse(temp1.Last());
+                    time.TimeElapsed = new TimeSpan(hh, mm, ss);
                 }
                 return ans.status;
             }

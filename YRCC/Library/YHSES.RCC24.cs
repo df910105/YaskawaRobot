@@ -8,6 +8,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /// 本頁功能確認於 2022/10/31 by Willy
 
         /// <summary>
         /// [RCC24] 程式選擇 (0x87). 長度限制32位元組(byte)
