@@ -9,7 +9,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int ExAxisDataR(ushort number, ref BasePosistion config, out ushort err_code)
+        public int ReadExAxisData(ushort number, ref BasePosistion config, out ushort err_code)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace YRCC.Library
             }
         }
 
-        public int ExAxisDataW(ushort number, BasePosistion config, out ushort err_code)
+        public int WriteExAxisData(ushort number, BasePosistion config, out ushort err_code)
         {
             try
             {

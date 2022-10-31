@@ -19,18 +19,10 @@ namespace Example
 
             try
             {
-                //RCC25
-                Time time = new Time();
-                rt = yrc1000.TimeDataR(1, ref time, out err);
-                Console.WriteLine(time);
-                ErrMsg(rt, err);
-
-                //RCC25
                 SystemInfo systemInfo = new SystemInfo();
-                rt = yrc1000.SystemInfoDataR(11, ref systemInfo, out err);
+                rt = yrc1000.ReadSystemInfoData(11, ref systemInfo, out err);
                 Console.WriteLine(systemInfo);
                 ErrMsg(rt, err);
-
 
                 #region -- Tested--
                 Console.WriteLine("----------Tested----------\r\n");
@@ -236,6 +228,18 @@ namespace Example
 
                 //RCC24
                 rt = yrc1000.SelectJob("TEST", 0, out err);
+                ErrMsg(rt, err);
+
+                //RCC25
+                Time time = new Time();
+                rt = yrc1000.ReadTimeData(1, ref time, out err);
+                Console.WriteLine(time);
+                ErrMsg(rt, err);
+
+                //RCC26
+                SystemInfo systemInfo = new SystemInfo();
+                rt = yrc1000.ReadSystemInfoData(11, ref systemInfo, out err);
+                Console.WriteLine(systemInfo);
                 ErrMsg(rt, err);
                  
                 */

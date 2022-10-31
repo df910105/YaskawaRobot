@@ -18,7 +18,7 @@ namespace YRCC.Library
         /// <param name="info"></param>
         /// <param name="err_code"></param>
         /// <returns></returns>
-        public int SystemInfoDataR(ushort number, ref SystemInfo info, out ushort err_code)
+        public int ReadSystemInfoData(ushort number, ref SystemInfo info, out ushort err_code)
         {
             try
             {

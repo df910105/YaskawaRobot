@@ -9,7 +9,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        public int BasePosDataR(ushort number, ref BasePosistion config, out ushort err_code)
+        public int ReadBasePosData(ushort number, ref BasePosistion config, out ushort err_code)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace YRCC.Library
             }
         }
 
-        public int BasePosDataW(ushort number, BasePosistion config, out ushort err_code)
+        public int WriteBasePosData(ushort number, BasePosistion config, out ushort err_code)
         {
             try
             {

@@ -18,7 +18,7 @@ namespace YRCC.Library
         /// <param name="time"></param>
         /// <param name="err_code"></param>
         /// <returns></returns>
-        public int TimeDataR(ushort number, ref Time time, out ushort err_code)
+        public int ReadTimeData(ushort number, ref Time time, out ushort err_code)
         {
             try
             {
