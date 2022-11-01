@@ -66,6 +66,8 @@ namespace YRCC.Library
 
         public int PORT_FILE_CONTROL { get; set; } = 10041;
 
+        public bool IsConnectOK { get; private set; } = false;
+
         #endregion
 
         public YHSES(string ip, int timeout = 800)
@@ -90,7 +92,11 @@ namespace YRCC.Library
                 if (!socket.Connected)
                 {
                     socket.Dispose();
-                    socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
+                    socket = new Socket(SocketType.Dgram, ProtocolType.Udp)
+                    {
+                        ReceiveTimeout = TimeOut,
+                        SendTimeout = TimeOut
+                    };
                 }
                 endPoint = new IPEndPoint(IPAddress.Parse(IP), port);
                 socket.Connect(endPoint);
@@ -154,10 +160,12 @@ namespace YRCC.Library
                     if (direction == TRANSMISSION_SEND_AND_RECV)
                     {
                         int count = socket.Receive(ans_packet);
+                        IsConnectOK = true;
                     }
                 }
                 catch (SocketException ex)
                 {
+                    IsConnectOK = false;
                     ans_packet = GenerateErrorAnsPacket(ERROR_CONNECTION, (ushort)ex.ErrorCode);
                 }
 
