@@ -9,6 +9,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /*
         public int ReadExAxisData(ushort number, ref BasePosistion config, out ushort err_code)
         {
             try
@@ -56,6 +57,6 @@ namespace YRCC.Library
 
                 throw;
             }
-        }
+        }*/
     }
 }

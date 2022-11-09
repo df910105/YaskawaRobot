@@ -9,6 +9,8 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        //Untest
+        /*
         public int FileDelete(string fileName, out ushort err_code)
         {
             try
@@ -26,6 +28,6 @@ namespace YRCC.Library
 
                 throw;
             }
-        }
+        }*/
     }
 }

@@ -8,6 +8,7 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
+        /*
         public int ReadAxisName(ushort robot_number, ref AxisName config, out ushort err_code)
         {
             try
@@ -35,7 +36,7 @@ namespace YRCC.Library
 
                 throw;
             }
-        }
+        }*/
     }
 
     public class AxisName
