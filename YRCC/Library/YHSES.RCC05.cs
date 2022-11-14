@@ -8,7 +8,15 @@ namespace YRCC.Library
 {
     partial class YHSES
     {
-        /*
+        /// 本頁功能確認於 2022/11/14 by Willy
+
+        /// <summary>
+        /// [RCC05] 讀取各軸名稱 (0x74)
+        /// </summary>
+        /// <param name="robot_number"></param>
+        /// <param name="config"></param>
+        /// <param name="err_code"></param>
+        /// <returns></returns>
         public int ReadAxisName(ushort robot_number, ref AxisName config, out ushort err_code)
         {
             try
@@ -36,18 +44,52 @@ namespace YRCC.Library
 
                 throw;
             }
-        }*/
+        }
     }
 
+    /// <summary>
+    /// 軸名稱
+    /// </summary>
     public class AxisName
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_1;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_2;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_3;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_4;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_5;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_6;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_7;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string Axis_8;
     }
 }

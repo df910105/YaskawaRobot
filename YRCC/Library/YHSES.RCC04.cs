@@ -43,13 +43,35 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 程式資訊
+    /// </summary>
     public class JobInfo
     {
+        /// <summary>
+        /// Job name (32 letters)
+        /// </summary>
         public string JobName = string.Empty;
+
+        /// <summary>
+        /// Line number (0 to 9999)
+        /// </summary>
         public uint Line = 0;
+
+        /// <summary>
+        /// Step number (0 to 9998)
+        /// </summary>
         public uint Step = 0;
+
+        /// <summary>
+        /// Speed override value.
+        /// </summary>
         public uint SpeedOverride = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"JobName: {JobName}\r\n" +

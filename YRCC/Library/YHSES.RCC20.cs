@@ -90,9 +90,19 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 開關切換
+    /// </summary>
     public enum SWITCH : int
     {
+        /// <summary>
+        /// 啟用
+        /// </summary>
         ON = 1,
+
+        /// <summary>
+        /// 關閉
+        /// </summary>
         OFF = 2,
     }
 }

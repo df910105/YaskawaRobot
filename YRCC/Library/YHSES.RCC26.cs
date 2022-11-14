@@ -12,7 +12,7 @@ namespace YRCC.Library
         /// 本頁功能確認於 2022/10/31 by Willy
 
         /// <summary>
-        /// [RCC26] 讀取版本序號 (0x89)
+        /// [RCC26] 讀取系統版本序號 (0x89)
         /// </summary>
         /// <param name="number"></param>
         /// <param name="info"></param>
@@ -43,12 +43,30 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 系統版本資訊
+    /// </summary>
     public class SystemInfo
     {
+        /// <summary>
+        /// 版本資訊
+        /// </summary>
         public string SysSoftwareVer = string.Empty;
+
+        /// <summary>
+        /// 名稱/應用
+        /// </summary>
         public string ModelName_App = string.Empty;
+
+        /// <summary>
+        /// 版本代號
+        /// </summary>
         public string ParameterVer = string.Empty;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"System software version: {SysSoftwareVer},\r\n" +

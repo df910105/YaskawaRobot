@@ -83,11 +83,25 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 軸資訊，需自行轉換單位
+    /// </summary>
     public class BasePosistion
     {
+        /// <summary>
+        /// 軸型態
+        /// </summary>
         public uint DataType = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Axis AxisData;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"DataType: {DataType},\r\n" +

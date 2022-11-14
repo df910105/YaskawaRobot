@@ -35,6 +35,9 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 模式
+    /// </summary>
     public enum CYCLE_TYPE : uint
     {
         /// <summary>

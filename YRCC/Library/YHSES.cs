@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using YRCC.Packet;
 
-/**
+/***
  * 
  * YASKAWA High Speed Ethernet Server Functions (C#)
  * 
@@ -24,10 +24,13 @@ using YRCC.Packet;
  * Authors:
  *    Willy Wu <ycwu@mail.mirdc.org.tw>
  *    
- */
+ ***/
 
 namespace YRCC.Library
 {
+    /// <summary>
+    /// YASKAWA High Speed Ethernet Server Functions (C#)
+    /// </summary>
     public sealed partial class YHSES
     {
         #region -- Field --
@@ -58,18 +61,38 @@ namespace YRCC.Library
 
         #region -- Property --
 
+        /// <summary>
+        /// Robot IP
+        /// </summary>
         public string IP { get; private set; }
 
+        /// <summary>
+        /// 逾時設定(ms)
+        /// </summary>
         public int TimeOut { get; private set; }
 
+        /// <summary>
+        /// 手臂控制埠，預設10040
+        /// </summary>
         public int PORT_ROBOT_CONTROL { get; set; } = 10040;
 
+        /// <summary>
+        /// 檔案傳輸埠，預設10041
+        /// </summary>
         public int PORT_FILE_CONTROL { get; set; } = 10041;
 
+        /// <summary>
+        /// 連線是否正常? (測試中)
+        /// </summary>
         public bool IsConnectOK { get; private set; } = false;
 
         #endregion
 
+        /// <summary>
+        /// YASKAWA High Speed Ethernet Server
+        /// </summary>
+        /// <param name="ip">IP位址 ex."192.168.255.1"</param>
+        /// <param name="timeout">連線逾時</param>
         public YHSES(string ip, int timeout = 800)
         {
             try

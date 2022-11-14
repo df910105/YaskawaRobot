@@ -54,14 +54,40 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 異常資訊
+    /// </summary>
     public class AlarmData
     {
+        /// <summary>
+        /// 發生時間
+        /// </summary>
         public DateTime Time = new DateTime();
+
+        /// <summary>
+        /// 描述
+        /// </summary>
         public string Name = string.Empty;
+
+        /// <summary>
+        /// 代號
+        /// </summary>
         public uint Code = 0;
+
+        /// <summary>
+        /// 次代號(sub code)
+        /// </summary>
         public uint Data = 0;
+
+        /// <summary>
+        /// 異常分類
+        /// </summary>
         public uint Type = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Time: {Time:g}\r\n" +
@@ -72,11 +98,11 @@ namespace YRCC.Library
         }
     }
 
-    public enum AlarmType : uint
+    /*public enum AlarmType : uint
     {
         //待補, 或改成Dictionary結構
         NoAlarm = 0,
 
         SLURBT = 3,
-    }
+    }*/
 }

@@ -71,34 +71,102 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 狀態資訊
+    /// </summary>
     public class StatusInfo
     {
+        /// <summary>
+        /// Data 1
+        /// </summary>
         public uint Data1 = 0;
+
+        /// <summary>
+        /// Data 2
+        /// </summary>
         public uint Data2 = 0;
 
         #region Data 1
 
+        /// <summary>
+        /// 單步
+        /// </summary>
         public bool Step => (Data1 & 0x01) > 0;
+
+        /// <summary>
+        /// 單次循環
+        /// </summary>
         public bool OneCycle => (Data1 & 0x02) > 0;
+
+        /// <summary>
+        /// 連續循環
+        /// </summary>
         public bool AutoAndCont => (Data1 & 0x04) > 0;
+
+        /// <summary>
+        /// 運轉中
+        /// </summary>
         public bool Running => (Data1 & 0x08) > 0;
+
+        /// <summary>
+        /// In-guard safe operation.
+        /// </summary>
         public bool InGuardSafe => (Data1 & 0x10) > 0;
+
+        /// <summary>
+        /// 教導模式
+        /// </summary>
         public bool Teach => (Data1 & 0x20) > 0;
+
+        /// <summary>
+        /// 再生模式
+        /// </summary>
         public bool Play => (Data1 & 0x40) > 0;
+
+        /// <summary>
+        /// 遠端(再生)模式
+        /// </summary>
         public bool CmdRemote => (Data1 & 0x80) > 0;
 
         #endregion
 
         #region Data 2
 
+        /// <summary>
+        /// 暫停中(教導盤)
+        /// </summary>
         public bool InHold_Pendant => (Data2 & 0x02) > 0;
+
+        /// <summary>
+        /// 暫停中(外部)
+        /// </summary>
         public bool InHold_Ext => (Data2 & 0x04) > 0;
+
+        /// <summary>
+        /// 暫停中(指令)
+        /// </summary>
         public bool InHold_Cmd => (Data2 & 0x08) > 0;
+
+        /// <summary>
+        /// 異常警告
+        /// </summary>
         public bool Alarming => (Data2 & 0x10) > 0;
+
+        /// <summary>
+        /// 錯誤發生
+        /// </summary>
         public bool ErrOccurring => (Data2 & 0x20) > 0;
+
+        /// <summary>
+        /// 伺服啟動
+        /// </summary>
         public bool ServoON => (Data2 & 0x40) > 0;
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Data1: {Data1}\r\n" +

@@ -60,17 +60,44 @@ namespace YRCC.Library
     }
 
     /// <summary>
-    /// 機器人位置原始資訊，請留意型態(pulse/coord)以及轉換coord的單位。
+    /// 機器人位置原始資訊，請留意型態(pulse/coord)以及轉換單位。
     /// </summary>
     public class Posistion
     {
+        /// <summary>
+        /// 資料型態(pulse/coord)
+        /// </summary>
         public uint DataType = 0;
+
+        /// <summary>
+        /// 手臂關節姿態。Refer "ch.3.9.4.12 Flip/No flip" in Operator's Manual.
+        /// </summary>
         public uint Figure = 0;
+
+        /// <summary>
+        /// 工具編號
+        /// </summary>
         public uint ToolNumber = 0;
+
+        /// <summary>
+        /// 使用者座標編號
+        /// </summary>
         public uint UserCoordNumber = 0;
+
+        /// <summary>
+        /// Extended type. Refer "ch.3.9.4.12 Flip/No flip" in Operator's Manual.
+        /// </summary>
         public uint ExtendedType = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Axis AxisData = new Axis();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if (DataType == 0)
@@ -106,17 +133,55 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 軸資訊，請留意型態(pulse/coord)以及轉換單位。
+    /// </summary>
     public class Axis
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_1 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_2 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_3 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_4 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_5 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_6 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_7 = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis_8 = 0;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return 

@@ -51,11 +51,25 @@ namespace YRCC.Library
         }
     }
 
+    /// <summary>
+    /// 系統時間資訊
+    /// </summary>
     public class Time
     {
+        /// <summary>
+        /// 始記時間
+        /// </summary>
         public DateTime DateStart = new DateTime();
+
+        /// <summary>
+        /// 運轉時間
+        /// </summary>
         public TimeSpan TimeElapsed = new TimeSpan();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Operation start time: {DateStart:g},\r\n" +
