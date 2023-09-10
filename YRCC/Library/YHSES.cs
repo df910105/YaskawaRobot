@@ -25,7 +25,7 @@ using YRCC.Packet;
  *    
  ***/
 
-namespace YRCC.Library
+namespace YRCC
 {
     /// <summary>
     /// YASKAWA High Speed Ethernet Server Functions (C#)

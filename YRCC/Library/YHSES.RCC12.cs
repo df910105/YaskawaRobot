@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using YRCC.Packet;
 
-namespace YRCC.Library
+namespace YRCC
 {
     partial class YHSES
     {

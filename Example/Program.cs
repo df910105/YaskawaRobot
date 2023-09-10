@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using YRCC.Library;
+using YRCC;
 
 namespace Example
 {
