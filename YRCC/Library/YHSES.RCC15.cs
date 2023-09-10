@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using YRCC.Packet;
 
 namespace YRCC
