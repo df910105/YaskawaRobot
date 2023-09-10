@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -10,19 +9,19 @@ using YRCC.Packet;
  * 
  * YASKAWA High Speed Ethernet Server Functions (C#)
  * 
- * This C# Library is implement from hsinkoyu/fs100 on GitHub (ref: https://github.com/hsinkoyu/fs100)
- *
- * Copyright (C) MIRDC 2022
+ * This C# Library is implement from YASKAWA High Speed Ethernet Server, 
+ * which is a UDP base robot control protocal provide by YASKAWA.
  * 
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
  * See the GNU General Public License for more details.
  * 
+ * Authors:
+ *    Willy Wu <df910105@gmail.com>
+ * 
  * Greatest Thanks To:
  *    Hsinko Yu <hsinkoyu@fih-foxconn.com>
- * 
- * Authors:
- *    Willy Wu <ycwu@mail.mirdc.org.tw>
+ *    Ref: https://github.com/hsinkoyu/fs100
  *    
  ***/
 

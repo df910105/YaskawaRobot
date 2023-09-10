@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("YHSES")]
 [assembly: AssemblyDescription("Implement Yaskawa High Speed Ethernet Server.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MIRDC")]
+[assembly: AssemblyCompany("df910105")]
 [assembly: AssemblyProduct("YHSES")]
-[assembly: AssemblyCopyright("Copyright © MIRDC 2022")]
+[assembly: AssemblyCopyright("Copyright © df910105 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
