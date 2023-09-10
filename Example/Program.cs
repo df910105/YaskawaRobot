@@ -6,7 +6,6 @@ namespace Example
 {
     class Program
     {
-        static YHSES yrc1000 = new YHSES("192.168.255.1");
         static int countT1 = 0;
         static int countT2 = 0;
 
@@ -36,6 +35,7 @@ namespace Example
 
         static void Main(string[] args)
         {
+            YHSES yrc1000 = new YHSES("192.168.255.1");
             Timer timer = new Timer(Callback, yrc1000, 1, 25);
             Timer timer2 = new Timer(Callback2, yrc1000, 1, 25);
 
