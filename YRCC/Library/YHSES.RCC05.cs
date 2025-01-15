@@ -33,7 +33,7 @@ namespace YRCC
                     config.Axis_5 = utf_8.GetString(ans.data.Skip(16).Take(4).ToArray());
                     config.Axis_6 = utf_8.GetString(ans.data.Skip(20).Take(4).ToArray());
                     config.Axis_7 = utf_8.GetString(ans.data.Skip(24).Take(4).ToArray());
-                    config.Axis_7 = utf_8.GetString(ans.data.Skip(28).Take(4).ToArray());
+                    config.Axis_8 = utf_8.GetString(ans.data.Skip(28).Take(4).ToArray());
                 }
                 return ans.status;
             }
