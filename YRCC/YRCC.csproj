@@ -1,75 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB863367-4A0B-41A9-8A57-203C2CF057FB}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>net472;net8.0</TargetFrameworks>
     <RootNamespace>YRCC</RootNamespace>
     <AssemblyName>YRCC</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <Nullable>disable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Release\YRCC.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Library\YHSES.FCC01.cs" />
-    <Compile Include="Library\YHSES.RCC01.cs" />
-    <Compile Include="Library\YHSES.cs" />
-    <Compile Include="Library\YHSES.RCC02.cs" />
-    <Compile Include="Library\YHSES.RCC04.cs" />
-    <Compile Include="Library\YHSES.RCC05.cs" />
-    <Compile Include="Library\YHSES.RCC06.cs" />
-    <Compile Include="Library\YHSES.RCC07.cs" />
-    <Compile Include="Library\YHSES.RCC08.cs" />
-    <Compile Include="Library\YHSES.RCC09.cs" />
-    <Compile Include="Library\YHSES.RCC10.cs" />
-    <Compile Include="Library\YHSES.RCC11.cs" />
-    <Compile Include="Library\YHSES.RCC12.cs" />
-    <Compile Include="Library\YHSES.RCC13.cs" />
-    <Compile Include="Library\YHSES.RCC14.cs" />
-    <Compile Include="Library\YHSES.RCC15.cs" />
-    <Compile Include="Library\YHSES.RCC16.cs" />
-    <Compile Include="Library\YHSES.RCC17.cs" />
-    <Compile Include="Library\YHSES.RCC18.cs" />
-    <Compile Include="Library\YHSES.RCC19.cs" />
-    <Compile Include="Library\YHSES.RCC20.cs" />
-    <Compile Include="Library\YHSES.RCC03.cs" />
-    <Compile Include="Library\YHSES.RCC21.cs" />
-    <Compile Include="Library\YHSES.RCC22.cs" />
-    <Compile Include="Library\YHSES.RCC23.cs" />
-    <Compile Include="Library\YHSES.RCC24.cs" />
-    <Compile Include="Library\YHSES.RCC25.cs" />
-    <Compile Include="Library\YHSES.RCC26.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Packet\PacketAns.cs" />
-    <Compile Include="Packet\PacketHeader.cs" />
-    <Compile Include="Packet\PacketReq.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
