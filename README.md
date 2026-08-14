@@ -7,9 +7,9 @@ Yaskawa High Speed Ethernet Server for .NET
 * DX200   (UnTest)
 * FS100   (UnTest)
 
-## Platform Support (Require .Net Framework 4.7.2)
-* C# 
-* LabVIEW
+## Platform Support
+* C# (.NET Framework 4.7.2, .NET Standard 2.0 -- covers .NET Core 2.0+, .NET 5/6/7/8/9+)
+* LabVIEW (.NET Framework 4.7.2)
 
 ## Methods
 43/47 Robot control commands is completed.

@@ -34,6 +34,11 @@ namespace YRCC
     {
         #region -- Field --
 
+        static YHSES()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
         Socket socket = new Socket(SocketType.Dgram, ProtocolType.Udp);
         EndPoint endPoint;
 
