@@ -17,7 +17,7 @@ namespace YRCC
         {
             try
             {
-                var bytes = big5.GetBytes(message);
+                var bytes = PendantEncoding.GetBytes(message);
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                     0x85, 1, 0x01, 0x10,
                     bytes, (ushort)bytes.Length);

@@ -48,7 +48,7 @@ namespace YRCC
             {
                 alarm.Time = dateTime;
             }
-            alarm.Name = big5.GetString(packetData.Skip(28).Take(32).ToArray()).TrimEnd('\0');
+            alarm.Name = PendantEncoding.GetString(packetData.Skip(28).Take(32).ToArray()).TrimEnd('\0');
         }
     }
 
