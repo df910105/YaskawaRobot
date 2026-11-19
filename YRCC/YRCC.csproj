@@ -5,11 +5,48 @@
     <RootNamespace>YRCC</RootNamespace>
     <AssemblyName>YRCC</AssemblyName>
     <Nullable>disable</Nullable>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Assembly / package identity. Version is the single source of truth. -->
+  <PropertyGroup>
+    <PackageId>YaskawaRobot.YHSES</PackageId>
+    <Version>1.0.0-beta.1</Version>
+    <Authors>Yu-Cian Wu</Authors>
+    <Company>Yu-Cian Wu</Company>
+    <Product>YHSES</Product>
+    <AssemblyTitle>YHSES</AssemblyTitle>
+    <Description>Yaskawa High Speed Ethernet Server (HSES) client for .NET. Reads and controls Yaskawa YRC1000 / DX200 / FS100 robot controllers over UDP.</Description>
+    <Copyright>Copyright © Yu-Cian Wu (CianWorks) and contributors 2022</Copyright>
+    <PackageTags>yaskawa;motoman;yrc1000;dx200;fs100;robot;hses;udp</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/df910105/YaskawaRobot</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/df910105/YaskawaRobot</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- IntelliSense docs, symbols and SourceLink. -->
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
