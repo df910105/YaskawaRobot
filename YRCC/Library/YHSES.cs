@@ -45,7 +45,6 @@ namespace YRCC
         private readonly object SocketLock = new object();
         readonly Encoding ascii = Encoding.ASCII;
         readonly Encoding utf_8 = Encoding.UTF8;
-        readonly Encoding big5 = Encoding.GetEncoding("big5");
         #endregion
 
         #region -- Constant --
@@ -90,6 +89,13 @@ namespace YRCC
         /// </summary>
         public bool IsConnectOK { get; private set; } = false;
 
+        /// <summary>
+        /// Encoding used for pendant-language-dependent fields (alarm name, DisplayMessage, string variables).
+        /// Must match the language configured on the controller's teach pendant.
+        /// Defaults to big5 (Traditional Chinese) for backward compatibility.
+        /// </summary>
+        public Encoding PendantEncoding { get; set; }
+
         #endregion
 
         /// <summary>
@@ -97,7 +103,10 @@ namespace YRCC
         /// </summary>
         /// <param name="ip">IP位址 ex."192.168.255.1"</param>
         /// <param name="timeout">連線逾時</param>
-        public YHSES(string ip, int timeout = 800)
+        /// <param name="pendantEncoding">
+        /// Encoding matching the controller's teach pendant language. Defaults to big5 if not provided.
+        /// </param>
+        public YHSES(string ip, int timeout = 800, Encoding pendantEncoding = null)
         {
             try
             {
@@ -105,6 +114,7 @@ namespace YRCC
                 TimeOut = timeout;
                 socket.ReceiveTimeout = TimeOut;
                 socket.SendTimeout = TimeOut;
+                PendantEncoding = pendantEncoding ?? Encoding.GetEncoding("big5");
             }
             catch (Exception)
             {
