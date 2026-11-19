@@ -30,7 +30,7 @@ namespace YRCC
     /// <summary>
     /// YASKAWA High Speed Ethernet Server Functions (C#)
     /// </summary>
-    public sealed partial class YHSES
+    public sealed partial class YHSES : IDisposable
     {
         #region -- Field --
 
@@ -144,6 +144,17 @@ namespace YRCC
             }
         }
 
+        /// <summary>
+        /// Release the underlying socket.
+        /// </summary>
+        public void Dispose()
+        {
+            lock (SocketLock)
+            {
+                Disconnect();
+            }
+        }
+
         private void Disconnect()
         {
             try
@@ -184,36 +195,44 @@ namespace YRCC
                     {
                         Connect(port);
                     }
-                }
-                catch (Exception)
-                {
 
-                    throw;
-                }
-
-                try
-                {
-                    socket.Send(packet);
-                    if (direction == TRANSMISSION_SEND_AND_RECV)
+                    try
                     {
-                        int count = socket.Receive(ans_packet);
-                        IsConnectOK = true;
+                        socket.Send(packet);
+                        if (direction == TRANSMISSION_SEND_AND_RECV)
+                        {
+                            int count = socket.Receive(ans_packet);
+                            if (count < PacketHeader.HEADER_SIZE)
+                            {
+                                //truncated/garbage datagram
+                                IsConnectOK = false;
+                                ans_packet = GenerateErrorAnsPacket(ERROR_CONNECTION, 0);
+                            }
+                            else
+                            {
+                                IsConnectOK = true;
+                            }
+                        }
                     }
-                }
-                catch (SocketException ex)
-                {
-                    IsConnectOK = false;
-                    ans_packet = GenerateErrorAnsPacket(ERROR_CONNECTION, (ushort)ex.ErrorCode);
-                }
+                    catch (SocketException ex)
+                    {
+                        IsConnectOK = false;
+                        ans_packet = GenerateErrorAnsPacket(ERROR_CONNECTION, (ushort)ex.ErrorCode);
+                    }
 
-                if (direction == TRANSMISSION_SEND_AND_RECV)
-                {
+                    if (direction != TRANSMISSION_SEND_AND_RECV)
+                    {
+                        //no reply expected: report success so callers never see null
+                        ans_packet = GenerateErrorAnsPacket(ERROR_SUCCESS, 0);
+                    }
                     ans = new PacketAns(ans_packet);
                 }
-
-                if (to_disc)
+                finally
                 {
-                    Disconnect();
+                    if (to_disc)
+                    {
+                        Disconnect();
+                    }
                 }
             }
             return ans;

@@ -27,16 +27,23 @@ namespace YRCC
                 if (ans.status == ERROR_SUCCESS)
                 {
                     string dateString = ascii.GetString(ans.data.Skip(0).Take(16).ToArray());
-                    time.DateStart = DateTime.ParseExact(dateString, DATE_PATTERN, null);
+                    if (DateTime.TryParseExact(dateString, DATE_PATTERN, null,
+                        System.Globalization.DateTimeStyles.None, out DateTime start))
+                    {
+                        time.DateStart = start;
+                    }
 
                     //PATTERN：%h:mm'ss
                     string timeString = ascii.GetString(ans.data.Skip(16).Take(12).ToArray()).TrimEnd('\0');
                     string[] temp0 = timeString.Split(':'); 
                     string[] temp1 = temp0.Last().Split('\'');
-                    int hh = int.Parse(temp0.First());
-                    int mm = int.Parse(temp1.First());
-                    int ss = int.Parse(temp1.Last());
-                    time.TimeElapsed = new TimeSpan(hh, mm, ss);
+                    if (temp0.Length == 2 && temp1.Length == 2 &&
+                        int.TryParse(temp0[0], out int hh) &&
+                        int.TryParse(temp1[0], out int mm) &&
+                        int.TryParse(temp1[1], out int ss))
+                    {
+                        time.TimeElapsed = new TimeSpan(hh, mm, ss);
+                    }
                 }
                 return ans.status;
             }

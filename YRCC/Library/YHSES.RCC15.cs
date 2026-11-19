@@ -26,7 +26,7 @@ namespace YRCC
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    data = PendantEncoding.GetString(ans.data.Skip(0).Take(16).ToArray());
+                    data = PendantEncoding.GetString(ans.data.Skip(0).Take(16).ToArray()).TrimEnd('\0');
                 }
                 return ans.status;
             }
@@ -49,6 +49,10 @@ namespace YRCC
             try
             {
                 var bytes = PendantEncoding.GetBytes(data);
+                if (bytes.Length > 16)
+                {
+                    throw new ArgumentException("data must be at most 16 bytes in the pendant encoding.", nameof(data));
+                }
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                     0x7E, number, 1, 0x10,
                     bytes, (ushort)bytes.Length);
