@@ -26,9 +26,9 @@ namespace YRCC
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    info.SysSoftwareVer = ascii.GetString(ans.data.Skip(0).Take(24).ToArray());
-                    info.ModelName_App = ascii.GetString(ans.data.Skip(24).Take(16).ToArray());
-                    info.ParameterVer = ascii.GetString(ans.data.Skip(40).Take(8).ToArray());
+                    info.SysSoftwareVer = ascii.GetString(ans.data.Skip(0).Take(24).ToArray()).TrimEnd('\0');
+                    info.ModelName_App = ascii.GetString(ans.data.Skip(24).Take(16).ToArray()).TrimEnd('\0');
+                    info.ParameterVer = ascii.GetString(ans.data.Skip(40).Take(8).ToArray()).TrimEnd('\0');
                 }
                 return ans.status;
             }

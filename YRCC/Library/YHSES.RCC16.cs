@@ -37,8 +37,8 @@ namespace YRCC
                     config.AxisData.Axis_4 = BitConverter.ToInt32(ans.data, 32);
                     config.AxisData.Axis_5 = BitConverter.ToInt32(ans.data, 36);
                     config.AxisData.Axis_6 = BitConverter.ToInt32(ans.data, 40);
-                    config.AxisData.Axis_7 = BitConverter.ToInt32(ans.data, 44);
-                    config.AxisData.Axis_8 = BitConverter.ToInt32(ans.data, 48);
+                    config.AxisData.Axis_7 = ans.data.Length >= 48 ? BitConverter.ToInt32(ans.data, 44) : 0;
+                    config.AxisData.Axis_8 = ans.data.Length >= 52 ? BitConverter.ToInt32(ans.data, 48) : 0;
                 }
                 return ans.status;
             }

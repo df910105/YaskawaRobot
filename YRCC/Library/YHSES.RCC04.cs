@@ -26,7 +26,7 @@ namespace YRCC
                 err_code = ans.added_status;
                 if (ans.status == ERROR_SUCCESS)
                 {
-                    job.JobName = utf_8.GetString(ans.data.Skip(0).Take(32).ToArray());
+                    job.JobName = utf_8.GetString(ans.data.Skip(0).Take(32).ToArray()).TrimEnd('\0');
                     job.Line = BitConverter.ToUInt32(ans.data, 32);
                     job.Step = BitConverter.ToUInt32(ans.data, 36);
                     job.SpeedOverride = BitConverter.ToUInt32(ans.data, 40);

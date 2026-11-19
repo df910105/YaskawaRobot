@@ -20,10 +20,11 @@ namespace YRCC
             try
             {
                 var bytes = utf_8.GetBytes(job_name);
-                if (bytes.Length <= 32)
+                if (bytes.Length > 32)
                 {
-                    bytes = bytes.Concat(new byte[32 - bytes.Length]).ToArray();
+                    throw new ArgumentException("job_name must be at most 32 bytes in UTF-8.", nameof(job_name));
                 }
+                bytes = bytes.Concat(new byte[32 - bytes.Length]).ToArray();
                 bytes = bytes.Concat(BitConverter.GetBytes(line)).ToArray();
                 var req = new PacketReq(PacketHeader.HEADER_DIVISION_ROBOT_CONTROL, 0,
                     0x87, 1, 0x00, 0x02,
