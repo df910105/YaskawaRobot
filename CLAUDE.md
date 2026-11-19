@@ -27,5 +27,5 @@ Public methods follow `int ReadXxx(..., ref/out data, out ushort err_code)`: bui
 ### Transport notes
 - `Transmit` is serialized by `SocketLock`; it connects lazily and disconnects after the call if it had to connect.
 - Socket errors do not throw: they are converted via `GenerateErrorAnsPacket` into an answer with `ERROR_CONNECTION` and the socket error code as `added_status`, and `IsConnectOK` is updated.
-- Text decoding: ASCII for dates/ids, Big5 for controller-provided names (Big5 requires `CodePagesEncodingProvider`, registered in the `YHSES` static constructor — needed on netstandard/.NET Core), UTF-8 for file names. Timestamps use `DATE_PATTERN` (`yyyy/MM/dd HH:mm`).
+- Text encoding: ASCII for dates/ids, UTF-8 for job/file names, and the configurable `YHSES.PendantEncoding` for pendant-language fields (alarm name, `DisplayMessage`, string variables). It must match the controller's pendant language and defaults to Big5 when the constructor's `pendantEncoding` argument is omitted. Big5 requires `CodePagesEncodingProvider`, registered in the `YHSES` static constructor (needed on netstandard/.NET Core). Timestamps use `DATE_PATTERN` (`yyyy/MM/dd HH:mm`).
 - Source comments/XML docs are largely in Traditional Chinese; keep that style when editing existing files.
